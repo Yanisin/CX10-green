@@ -1,51 +1,53 @@
 Cheerson CX10 green firmware
 ============================
 
-Cheerson CX10 green firmware attempt.
+Cheerson CX10(A) ?green? firmware attempt.
 
 This is the fork of https://github.com/samuelpowell/CX10-FNRF (original
 description below)
 
 Be aware, that this is (and will most likely always be) work in progress.
 
-HW config of my cheerson:
-Cherson board with "JG-CX10R-3" from CX10A
-MCU: STM32f031K4
-Gyro: INVENSE MPU 60520 (Is it the MPU 6050?)
-Wifi: XN297
+HW config of my CX10A
+---------------------
+
+- Cherson board with "JG-CX10R-3" from CX10A
+- MCU: STM32f031K4
+- Gyro: INVENSE MPU 60520 (Is it the MPU 6050?)
+- Wifi: XN297
 
 
-PA1 LDO_Enable
-PA7 Battery_Voltage
-PA4 LED2
-PB1 LED1
+- PA1 LDO_Enable
+- PA7 Battery_Voltage
+- PA4 LED2
+- PB1 LED1
 
-PA2 Motor_Sense_RightFront
-PA3 Motor_Sense_RightRear
-PA5 Motor_Sense_LeftFront
-PA6 Motor_Sense_LeftRear
+- PA2 Motor_Sense_RightFront
+- PA3 Motor_Sense_RightRear
+- PA5 Motor_Sense_LeftFront
+- PA6 Motor_Sense_LeftRear
 
-PA8 MOSFET_LeftRear (TIM1_CH1)
-PA9 MOSFET_RightFront (TIM1_CH2)
-PA10 MOSFET_RightRear (TIM1_CH3)
-PA11 MOSFET_LeftFront (TIM1_CH4)
+- PA8 MOSFET_LeftRear (TIM1_CH1)
+- PA9 MOSFET_RightFront (TIM1_CH2)
+- PA10 MOSFET_RightRear (TIM1_CH3)
+- PA11 MOSFET_LeftFront (TIM1_CH4)
 
-PA13 Testpin_SWDIO
-PA14 Testpin_SWCLK
+- PA13 Testpin_SWDIO
+- PA14 Testpin_SWCLK
 
-PA15 Wifi_CSN (SPI1)
-PB3 Wifi_SCK
-PB4 Wifi_MISO
-PB5 Wifi_MOSI
-PB8 Wifi_CE
-PA12 Wifi_IRQ
+- PA15 Wifi_CSN (SPI1)
+- PB3 Wifi_SCK
+- PB4 Wifi_MISO
+- PB5 Wifi_MOSI
+- PB8 Wifi_CE
+- PA12 Wifi_IRQ
 
-PA0 Gyro_INT
-PB6 Gyro_SCL (I2C1)
-PB7 Gyro_SDA (I2C1)
+- PA0 Gyro_INT
+- PB6 Gyro_SCL (I2C1)
+- PB7 Gyro_SDA (I2C1)
 
-PB0 NC?
-PB2 NC?
+- PB0 NC?
+- PB2 NC?
 
 
 
