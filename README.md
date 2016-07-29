@@ -1,3 +1,14 @@
+Cheerson CX10 green firmware
+============================
+
+Cheerson CX10 green firmware attempt.
+
+This is the fork of https://github.com/samuelpowell/CX10-FNRF (original
+description below)
+
+Be awere, that this is (and will most likely always be) work in progress.
+
+
 cx10_fnrf
 =========
 

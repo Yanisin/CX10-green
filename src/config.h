@@ -64,10 +64,10 @@
 	#define LEDoff Bit_RESET
 	
 	#define LED1_PORT GPIOB
-	#define LED1_BIT GPIO_Pin_2
+	#define LED1_BIT GPIO_Pin_1
 	
 	#define LED2_PORT GPIOA
-	#define LED2_BIT GPIO_Pin_15
+	#define LED2_BIT GPIO_Pin_4
 	
 	#define RADIO_SPI                 SPI1
 	#define RADIO_GPIO_SPI_CS         GPIO_Pin_4

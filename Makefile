@@ -120,8 +120,10 @@ TARGET_HEX	 = $(BIN_DIR)/cx10_fnrf_gnu_r01.hex
 TARGET_ELF	 = $(BIN_DIR)/cx10_fnrf_gnu_r01.elf
 TARGET_OBJS	 = $(addsuffix .o,$(addprefix $(OBJECT_DIR)/,$(basename $(SRC))))
 
+.PHONY: clean install flash_write flash_unlock
 # List of buildable ELF files and their object dependencies.
 # It would be nice to compute these lists, but that seems to be just beyond make.
+all: $(TARGET_HEX)
 
 $(TARGET_HEX): $(TARGET_ELF)
 	$(OBJCOPY) -O ihex $< $@
@@ -150,6 +152,20 @@ $(OBJECT_DIR)/%.o): %.S
 
 clean:
 	rm -f $(TARGET_HEX) $(TARGET_ELF) $(TARGET_OBJS)
+
+install: flash_write
+
+flash_write: $(TARGET_HEX)
+	openocd -f /usr/share/openocd/scripts/interface/stlink-v2.cfg \
+		-f /usr/share/openocd/scripts/target/stm32f0x.cfg \
+		-c init -c halt -c "flash write_image erase $<" -c shutdown
+
+flash_unlock:
+#unlock (well it's different MCU, but you got the point ;) )
+#openocd -f /usr/share/openocd/scripts/interface/stlink-v2.cfg \
+#-f /usr/share/openocd/scripts/target/stm32f1x.cfg \
+#-c init -c halt -c "stm32f1x unlock 0" -c "stm32f1x options_read 0" -c shutdown
+
 
 help:
 	@echo ""

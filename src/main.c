@@ -116,12 +116,16 @@ void delayMicroseconds(uint32_t us){
 
 
 int main(void){
+	volatile uint32_t   dly;
+
+
 	SystemInit();
 
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA | RCC_AHBPeriph_GPIOB, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1 | RCC_APB1Periph_TIM2 | RCC_APB1Periph_TIM3, ENABLE);
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1 | RCC_APB2Periph_USART1 | RCC_APB2Periph_ADC1 | RCC_APB2Periph_TIM16 | RCC_APB2Periph_TIM1 | RCC_APB2Periph_SYSCFG, ENABLE);
-	
+//	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1 | RCC_APB1Periph_TIM2 | RCC_APB1Periph_TIM3, ENABLE);
+//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1 | RCC_APB2Periph_USART1 | RCC_APB2Periph_ADC1 | RCC_APB2Periph_TIM16 | RCC_APB2Periph_TIM1 | RCC_APB2Periph_SYSCFG, ENABLE);
+
+#if 0	
 	//init
 	init_Timer();
 	init_ADC();
@@ -134,7 +138,8 @@ int main(void){
 	#endif
 	
 	init_MPU6050();
-	
+#endif
+
 	GPIO_InitTypeDef LEDGPIOinit;
 	LEDGPIOinit.GPIO_Pin = LED1_BIT;
 	LEDGPIOinit.GPIO_Mode = GPIO_Mode_OUT;
@@ -148,7 +153,21 @@ int main(void){
 	
 	GPIO_WriteBit(LED1_PORT, LED1_BIT, LEDoff);
 	GPIO_WriteBit(LED2_PORT, LED2_BIT, LEDoff);
+
+	while(1) 
+	{
+	GPIO_WriteBit(LED1_PORT, LED1_BIT, LEDon);
+	GPIO_WriteBit(LED2_PORT, LED2_BIT, LEDon);
+	for(dly = 0; dly < 500000; dly++);
+
+
+	GPIO_WriteBit(LED1_PORT, LED1_BIT, LEDoff);
+	GPIO_WriteBit(LED2_PORT, LED2_BIT, LEDoff);
+	for(dly = 0; dly < 500000; dly++);
 	
+	}
+	
+#if 0
 	#if defined(CX_10_BLUE_BOARD)
 		LEDGPIOinit.GPIO_Pin = GPIO_Pin_5; // 3,3V LDO enable
 		GPIO_Init(GPIOA, &LEDGPIOinit);	
@@ -397,6 +416,7 @@ int main(void){
 			#endif
 		}
 	}
+	#endif
 }
 
 
